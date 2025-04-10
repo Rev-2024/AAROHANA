@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - AAROHANA 2K25</title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-flex">
+            <div class="logo">
+                 <a href="index.html"><img src="images/logo/kssem-logo-placeholder.png" alt="KSSEM Logo"></a>
+            </div>
+            <nav class="main-navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="index.html#gallery">Gallery</a></li>
+                    <li><a href="register.html" class="active">Register</a></li>
+                    <li><a href="committee.html">Student Committee</a></li>
+                    <li><a href="managing_committee.html">Managing Committee</a></li>
+                    <li><a href="index.html#sponsors">Sponsors</a></li>
+                    <li><a href="index.html#updates">Updates</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
+        </div>
+    </header>
+
+    <!-- Main Content for Registration Page -->
+    <main>
+        <section id="registration-form" class="content-section">
+            <div class="container">
+                <h2 class="section-title">Register for AAROHANA 2K25</h2>
+                <!-- Form submission is now handled by script.js sending to API -->
+                <form class="classical-form" id="main-registration-form">
+                    <!-- Removed action and method attributes -->
+
+                    <div class="form-group">
+                        <label for="name">Full Name:</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usn">USN:</label>
+                        <input type="text" id="usn" name="usn" required pattern="[1-4][Kk][Ss][MmTtEe][0-9]{2}[A-Za-z]{2}[0-9]{3}" title="Enter valid KSSEM/KSMT/KSEIT USN (e.g., 1KS21CS001)" placeholder="e.g., 1KS21CS001">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email ID:</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your college email or primary email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" name="phone" required pattern="[6-9][0-9]{9}" title="Enter a valid 10-digit Indian mobile number" placeholder="10-digit mobile number">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="semester">Semester:</label>
+                        <select id="semester" name="semester" required>
+                            <option value="" disabled selected>-- Select Semester --</option>
+                            <option value="1">1st</option>
+                            <option value="2">2nd</option>
+                            <option value="3">3rd</option>
+                            <option value="4">4th</option>
+                            <option value="5">5th</option>
+                            <option value="6">6th</option>
+                            <option value="7">7th</option>
+                            <option value="8">8th</option>
+                        </select>
+                    </div>
+
+                     <div class="form-group">
+                        <label for="branch">Branch:</label>
+                        <select id="branch" name="branch" required>
+                            <option value="" disabled selected>-- Select Branch --</option>
+                            <option value="CSE">Computer Science & Engineering</option>
+                            <option value="ISE">Information Science & Engineering</option>
+                            <option value="ECE">Electronics & Communication Engineering</option>
+                            <option value="ME">Mechanical Engineering</option>
+                            <option value="CE">Civil Engineering</option>
+                             <option value="AIML">Artificial Intelligence & Machine Learning</option>
+                            <!-- Add other branches -->
+                        </select>
+                    </div>
+
+                    <div class="form-group event-selection">
+                        <label>Select Event(s) to Participate In:</label>
+                        <!-- Paid Events -->
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="event_group_dance" name="events[]" value="GroupDance" data-fee="500">
+                            <label for="event_group_dance">Group Dance (₹500 per team)</label>
+                        </div>
+                         <div class="checkbox-group">
+                            <input type="checkbox" id="event_group_singing" name="events[]" value="GroupSinging" data-fee="400">
+                            <label for="event_group_singing">Group Singing (₹400 per team)</label>
+                        </div>
+                         <div class="checkbox-group">
+                            <input type="checkbox" id="event_solo_singing" name="events[]" value="SoloSinging" data-fee="100">
+                            <label for="event_solo_singing">Solo Singing (₹100 per person)</label>
+                        </div>
+                         <div class="checkbox-group">
+                            <input type="checkbox" id="event_solo_dance" name="events[]" value="SoloDance" data-fee="150">
+                            <label for="event_solo_dance">Solo Dance (₹150 per person)</label>
+                        </div>
+                         <div class="checkbox-group">
+                            <input type="checkbox" id="event_quiz" name="events[]" value="Quiz" data-fee="100">
+                            <label for="event_quiz">Quiz Competition (₹100 per team - 2 members)</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="event_debate" name="events[]" value="Debate" data-fee="100">
+                            <label for="event_debate">Debate (₹100 per team - 2 members)</label>
+                        </div>
+                         <div class="checkbox-group">
+                            <input type="checkbox" id="event_essay" name="events[]" value="Essay" data-fee="50">
+                            <label for="event_essay">Essay Writing (₹50 per person)</label>
+                        </div>
+                         <div class="checkbox-group">
+                            <input type="checkbox" id="event_photography" name="events[]" value="Photography" data-fee="100">
+                            <label for="event_photography">Photography (₹100 per person)</label>
+                        </div>
+                         <div class="checkbox-group">
+                            <input type="checkbox" id="event_treasure_hunt" name="events[]" value="TreasureHunt" data-fee="200">
+                            <label for="event_treasure_hunt">Treasure Hunt (₹200 per team - max 4)</label>
+                        </div>
+                        <!-- Free Events -->
+                        <hr style="margin: 15px 0;">
+                         <div class="checkbox-group">
+                             <input type="checkbox" id="event_guest_lecture" name="events[]" value="GuestLecture" data-fee="0">
+                             <label for="event_guest_lecture">Guest Lecture (Free Entry)</label>
+                         </div>
+                          <div class="checkbox-group">
+                             <input type="checkbox" id="event_open_mic" name="events[]" value="OpenMic" data-fee="0">
+                             <label for="event_open_mic">Open Mic Session (Free)</label>
+                         </div>
+                         <!-- Add more events (paid or free with data-fee="0") -->
+                    </div>
+
+                    <div class="form-group total-fee">
+                        <label>Total Calculated Entry Fee:</label>
+                        <span id="total-fee-display">₹0</span>
+                    </div>
+
+                    <!-- Feedback area for submission status -->
+                    <div class="form-group payment-info">
+                        <p>After clicking 'Register Now', please check your email for your registration token and payment instructions (if applicable).</p>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="button button-primary">Register Now</button>
+                    </div>
+
+                </form>
+            </div> <!-- /.container -->
+        </section> <!-- /#registration-form -->
+    </main>
+
+    <!-- Footer -->
+     <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 AAROHANA - K. S. School of Engineering and Management. All Rights Reserved.</p>
+            <p>Website Developed by the AAROHANA Website Team</p>
+            <div class="social-links">
+                 <a href="YOUR_FEST_INSTA_LINK" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="YOUR_FEST_FACEBOOK_LINK" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main script handles fee display and form submission -->
+    <script src="script.js"></script>
+
+</body>
+</html>

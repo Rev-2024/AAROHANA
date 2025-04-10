@@ -1,0 +1,349 @@
+/* === Add or Modify these styles in style.css === */
+
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-color: #800000; /* Maroon */
+    --secondary-color: #B8860B; /* Dark Gold */
+    --background-color: #FAF0E6; /* Cream/Linen */
+    --text-color: #333333; /* Dark Grey */
+    --header-bg: #ffffff; /* White for header clarity */
+    --footer-bg: #4a0000; /* Darker Maroon for footer */
+    --light-text: #f8f8f8;
+    --card-bg: #ffffff; /* Background for cards */
+    --border-light: #ddd; /* Light border color */
+    --border-medium: #ccc; /* Medium border color */
+    --accent-bg-color: #eaddcc; /* Slightly darker cream */
+
+    --font-title: 'Cinzel Decorative', serif;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+
+    --container-width: 1100px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background-color: var(--background-color); color: var(--text-color); line-height: 1.6; font-size: 16px; }
+.container { max-width: var(--container-width); margin: 0 auto; padding: 0 20px; }
+a { color: var(--primary-color); text-decoration: none; transition: color 0.3s ease; }
+a:hover { color: var(--secondary-color); }
+img { max-width: 100%; height: auto; display: block; vertical-align: middle; }
+.section-title { font-family: var(--font-heading); color: var(--primary-color); text-align: center; font-size: 2.5rem; margin-bottom: 40px; position: relative; padding-bottom: 10px; }
+.section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 3px; background-color: var(--secondary-color); }
+.content-section { padding: 60px 0; }
+.accent-bg { background-color: var(--accent-bg-color); }
+.text-center { text-align: center; }
+
+/* --- Header --- */
+.site-header { background-color: var(--header-bg); padding: 10px 0; border-bottom: 3px solid var(--secondary-color); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); position: sticky; top: 0; left: 0; width: 100%; z-index: 1000; }
+.header-flex { display: flex; justify-content: space-between; align-items: center; }
+.logo img { height: 65px; width: auto; }
+.main-navigation ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; align-items: center; flex-wrap: wrap; /* Allow wrap on smaller screens */ }
+.main-navigation a { font-family: var(--font-body); font-weight: 700; color: var(--text-color); padding: 8px 4px; border-bottom: 2px solid transparent; transition: color 0.3s ease, border-bottom-color 0.3s ease; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; /* Prevent wrapping within a link */ }
+.main-navigation a:hover, .main-navigation a.active { color: var(--primary-color); border-bottom-color: var(--secondary-color); }
+.menu-toggle { display: none; background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--primary-color); }
+
+/* --- Hero Section with Video Background --- */
+.hero-section {
+    position: relative; /* Crucial for positioning video and overlay */
+    min-height: 85vh; /* Adjust as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    border-bottom: 5px solid var(--secondary-color);
+    overflow: hidden; /* Prevent potential video overflow */
+}
+
+/* Overlay */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(74, 0, 0, 0.5); /* 50% opaque darker maroon overlay */
+    z-index: 0; /* Position overlay between video and content */
+}
+
+/* Style the <picture> element itself */
+.hero-video-picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure picture element is behind content */
+}
+
+/* Style the <video> element (inside <picture> or standalone) */
+.hero-background-video {
+    /* This video element now inherits size from picture */
+    /* Or takes full size if picture fails */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the area, cropping if needed */
+    display: block; /* Ensure it behaves like a block */
+    position: absolute; /* Keep positioning within picture/hero */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%; /* Ensure it covers width */
+    min-height: 100%; /* Ensure it covers height */
+}
+
+.hero-content {
+    position: relative; /* Keep content in flow relative to flex container */
+    z-index: 1; /* Ensure content is above video and overlay */
+    max-width: 800px;
+    color: var(--light-text); /* Make default text light */
+}
+
+/* Adjust specific text styles for better contrast */
+.hero-content .fest-title {
+    font-family: var(--font-title);
+    font-size: 5rem;
+    color: var(--light-text);
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    margin-bottom: 10px;
+    line-height: 1.1;
+}
+
+.hero-content .theme-kannada {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: var(--light-text);
+    margin-bottom: 30px;
+    font-style: italic;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content .theme-kannada .theme-english {
+    color: var(--light-text); /* Example: Keep English part gold */
+}
+
+/* --- Buttons --- */
+.button { display: inline-block; padding: 12px 30px; border-radius: 5px; font-family: var(--font-body); font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.3s ease; border: 2px solid transparent; text-align: center; }
+.button-primary { background-color: var(--primary-color); color: var(--light-text); border-color: var(--primary-color); }
+.button-primary:hover { background-color: var(--secondary-color); border-color: var(--secondary-color); color: var(--light-text); transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+.button-secondary { background-color: var(--secondary-color); color: var(--light-text); margin: 0 auto; display: inline-flex; align-items: center; gap: 8px; }
+.button-secondary:hover { background-color: var(--primary-color); color: var(--light-text); transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+.button-secondary i { font-size: 1.1em; }
+
+/* --- Updates Section --- */
+#updates { background-color: var(--accent-bg-color); }
+.updates-list { list-style: none; padding-left: 0; max-width: 800px; margin: 0 auto; }
+.updates-list li { background-color: rgba(255, 255, 255, 0.6); padding: 15px 20px; margin-bottom: 15px; border-left: 4px solid var(--secondary-color); border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+.update-date { display: block; font-size: 0.9rem; color: #666; margin-bottom: 5px; font-style: italic; }
+.update-text { display: block; font-size: 1rem; line-height: 1.5; }
+.update-link { font-weight: bold; color: var(--primary-color); text-decoration: underline; }
+.update-link:hover { color: var(--secondary-color); text-decoration: none; }
+
+/* --- Gallery Section --- */
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.gallery-grid img { border: 3px solid var(--secondary-color); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; width: 100%; height: 250px; object-fit: cover; background-color: #eee; }
+.gallery-grid img:hover { transform: scale(1.05); box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); }
+
+/* --- Events Button Section (Teaser) --- */
+#events-teaser p { max-width: 700px; margin: 0 auto 20px auto; }
+
+/* --- Sponsors Section --- */
+.sponsors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 30px; align-items: center; }
+.sponsor-logo { display: flex; justify-content: center; align-items: center; padding: 10px; transition: transform 0.3s ease; }
+.sponsor-logo img {max-height: 80px; width: auto; filter: grayscale(80%); opacity: 0.8; transition: filter 0.3s ease, opacity 0.3s ease; }
+.sponsor-logo:hover img { filter: grayscale(0%); opacity: 1; }
+.sponsor-logo:hover { transform: scale(1.1); }
+
+/* --- Committee Preview Section --- */
+#committee-preview p { max-width: 600px; margin: 0 auto 20px auto; }
+
+/* --- Events Page Specific Styles --- */
+.event-category { margin-bottom: 50px; }
+.category-title { font-family: var(--font-heading); color: var(--primary-color); font-size: 2rem; text-align: center; margin-bottom: 30px; border-bottom: 2px solid var(--secondary-color); display: inline-block; padding-bottom: 5px; position: relative; left: 50%; transform: translateX(-50%); }
+.sub-category-title { font-family: var(--font-heading); color: var(--secondary-color); font-size: 1.5rem; text-align: center; margin-top: 30px; margin-bottom: 20px; }
+.events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
+.event-card { background-color: var(--card-bg); border: 1px solid var(--border-light); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; position: relative; }
+.event-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 8px 15px rgba(128, 0, 0, 0.2); }
+.event-poster-image { width: 100%; aspect-ratio: 420 / 594; object-fit: cover; display: block; background-color: #eee; }
+.event-poster-title { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(128, 0, 0, 0.9), rgba(128, 0, 0, 0.7), transparent); color: var(--light-text); padding: 20px 15px 10px 15px; text-align: center; font-family: var(--font-heading); font-size: 1.3rem; font-weight: bold; transition: background 0.3s ease; pointer-events: none; /* Allow clicks to pass through to card */ }
+
+/* --- Event Modal Styles --- */
+.modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.7); /* Darker overlay */ opacity: 0; transition: opacity 0.3s ease-in-out; padding-top: 5vh; /* Adjust top padding */ }
+.modal.active { display: block; opacity: 1; }
+.modal-content { background-color: var(--background-color); margin: auto; padding: 30px 40px; border: 3px solid var(--secondary-color); border-radius: 8px; width: 90%; max-width: 650px; position: relative; box-shadow: 0 5px 20px rgba(0,0,0,0.3); animation: slideDown 0.4s ease-out; }
+@keyframes slideDown { from {transform: translateY(-30px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+.modal-close-button { color: #aaa; position: absolute; top: 10px; right: 20px; font-size: 32px; /* Larger close button */ font-weight: bold; transition: color 0.2s ease; line-height: 1; }
+.modal-close-button:hover, .modal-close-button:focus { color: var(--primary-color); text-decoration: none; cursor: pointer; }
+#modalEventTitle { font-family: var(--font-heading); color: var(--primary-color); margin-top: 0; margin-bottom: 20px; font-size: 2rem; text-align: center; }
+.modal-details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px 20px; margin-bottom: 20px; font-size: 1rem; }
+.modal-details-grid p { margin-bottom: 5px; display: flex; align-items: center; }
+.modal-details-grid p i { margin-right: 10px; color: var(--secondary-color); width: 1.3em; text-align: center; font-size: 1.1em; /* Slightly larger icons */ }
+.modal-details-grid p strong { display: none; }
+.modal-divider { border: 0; height: 1px; background-image: linear-gradient(to right, rgba(128, 0, 0, 0), var(--primary-color), rgba(128, 0, 0, 0)); margin: 25px 0; }
+#modalEventDescription { line-height: 1.6; margin-bottom: 20px; font-size: 1.05rem; }
+#modalEventRulesLink { text-align: center; margin: 20px 0; }
+#modalEventRulesLink a { display: inline-block; font-weight: bold; color: var(--primary-color); padding: 5px 10px; border: 1px solid var(--primary-color); border-radius: 4px; transition: all 0.3s ease; }
+#modalEventRulesLink a:hover { background-color: var(--primary-color); color: white; text-decoration: none; }
+.modal-register-button { display: block; width: 60%; margin: 20px auto 0 auto; text-align: center; font-size: 1.1rem; }
+
+/* --- Schedule Page Styles --- */
+.schedule-note { margin-bottom: 40px; font-style: italic; color: #555; }
+.schedule-container { max-width: 900px; margin: 0 auto; }
+.schedule-day { background-color: rgba(255, 255, 255, 0.5); border: 1px solid var(--border-light); border-left: 5px solid var(--primary-color); padding: 25px 35px; /* Increased padding */ margin-bottom: 35px; /* Increased margin */ border-radius: 5px; box-shadow: 0 3px 8px rgba(0,0,0,0.07); }
+.day-heading { font-family: var(--font-heading); color: var(--primary-color); font-size: 1.7rem; /* Slightly larger */ margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px dashed var(--secondary-color); }
+.day-events-list { list-style: none; padding-left: 0; }
+.day-events-list li { padding: 10px 0; /* Increased padding */ border-bottom: 1px solid #eee; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 1.05rem; /* Slightly larger font */ }
+.day-events-list li:last-child { border-bottom: none; }
+.event-time { font-weight: bold; color: var(--secondary-color); min-width: 170px; /* More space for time */ flex-shrink: 0; }
+.event-venue { font-style: italic; color: #666; font-size: 0.95rem; text-align: right; margin-left: auto; /* Push venue reliably right */ padding-left: 15px; /* Add space before venue */ }
+
+/* --- Registration Form Styles --- */
+.classical-form {
+    max-width: 700px;
+    margin: 40px auto; /* This should center the form block */
+    background-color: var(--card-bg);
+    padding: 30px 40px;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.form-group { margin-bottom: 25px; }
+.form-group label { display: block; /* Keep label on its own line */ font-family: var(--font-heading); color: var(--primary-color); margin-bottom: 10px; /* Increased spacing slightly */ font-size: 1.1rem; text-align: center; /* Center label text */ }
+.form-group input[type="text"], .form-group input[type="email"], .form-group input[type="tel"], .form-group select { width: 100%; padding: 12px; border: 1px solid var(--border-medium); border-radius: 4px; font-family: var(--font-body); font-size: 1rem; background-color: #fdfdfd; transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Inputs remain 100% width */ }
+.form-group input:focus, .form-group select:focus { outline: none; border-color: var(--secondary-color); box-shadow: 0 0 5px rgba(184, 134, 11, 0.3); }
+.form-group.event-selection > label { margin-bottom: 10px; /* Match other labels */ }
+.form-group select { cursor: pointer; }
+optgroup { font-weight: bold; font-style: italic; color: var(--primary-color); /* Style the group label */ }
+option { font-weight: normal; /* Ensure options are normal weight */ font-style: normal; }
+.payment-info p { font-size: 0.95rem; color: #555; margin-top: -15px; margin-bottom: 20px; text-align: center; padding: 10px; border-radius: 4px; min-height: 40px; line-height: 1.5; }
+.payment-info p strong { font-weight: bold; }
+.payment-info p em { display: block; margin-top: 5px; font-size: 0.85rem; }
+.classical-form button[type="submit"] { width: auto; /* Let button size naturally or set specific width */ min-width: 180px; /* Ensure minimum width */ display: block; /* Make it block to use margin: auto */ margin-left: auto; /* Center the button */ margin-right: auto; /* Center the button */ padding: 15px 30px; /* Adjust padding */ font-size: 1.1rem; }
+.classical-form button[type="submit"]:disabled { background-color: #ccc; border-color: #ccc; cursor: not-allowed; color: #666; }
+
+/* --- Committee Page Styles (Student) --- */
+.committee-section { margin-bottom: 50px; }
+.committee-sub-title { font-family: var(--font-heading); color: var(--primary-color); font-size: 1.8rem; text-align: center; margin-bottom: 30px; border-bottom: 2px solid var(--secondary-color); display: inline-block; padding-bottom: 5px; position: relative; left: 50%; transform: translateX(-50%); }
+#committee-page .committee-grid { /* Target grids only within student committee page */ display: grid; justify-content: center; gap: 30px; }
+#committee-page .core-committee { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjust minmax if needed */ max-width: 900px; /* Adjust max-width based on number of coordinators */ margin: 0 auto; }
+#committee-page .team-leads { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Slightly smaller min for leads */ max-width: 600px; margin: 0 auto 30px auto; }
+#committee-page .team-members { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Slightly smaller min for members */ }
+#committee-page .committee-member { text-align: center; padding: 10px; }
+#committee-page .member-photo-wrapper { position: relative; /* <<< CRITICAL: Ensure this is present */ width: 150px; /* Default size for members */ height: 150px; margin: 0 auto 15px auto; border-radius: 50%; overflow: hidden; /* Keep overflow hidden */ border: 3px solid var(--secondary-color); box-shadow: 0 4px 10px rgba(0,0,0,0.1); background-color: #eee; /* Placeholder bg */ }
+#committee-page .core-committee .member-photo-wrapper, #committee-page .committee-member.lead .member-photo-wrapper { width: 180px; /* Keep lead/core size consistent */ height: 180px; }
+#committee-page .team-members .member-photo-wrapper { width: 120px; /* Keep member size */ height: 120px; }
+#committee-page .member-photo-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; /* Transition for zoom effect */ }
+#committee-page .insta-link { position: absolute; /* <<< CRITICAL: Must be absolute */ top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(128, 0, 0, 0.7); /* Maroon overlay, adjust alpha if needed */ display: flex; /* Use flexbox to center icon */ justify-content: center; align-items: center; opacity: 0; /* <<< CRITICAL: Hidden by default */ transition: opacity 0.3s ease-in-out; /* Smooth fade */ border-radius: 50%; /* Match parent shape */ color: white; /* Icon color */ }
+#committee-page .insta-link i.fab.fa-instagram { font-size: 2.5rem; /* Default icon size */ }
+#committee-page .team-members .insta-link i.fab.fa-instagram { font-size: 2rem; /* Smaller icon for team members */ }
+#committee-page .member-photo-wrapper:hover .insta-link { opacity: 1; /* <<< CRITICAL: Make overlay visible on hover */ }
+#committee-page .member-photo-wrapper:hover img { transform: scale(1.1); }
+#committee-page .committee-member h4 { font-family: var(--font-heading); font-size: 1.2rem; color: var(--primary-color); margin-bottom: 5px; }
+#committee-page .committee-member p { /* Style for designation (leads/core) */ font-size: 1rem; color: var(--text-color); margin-top: -5px; font-style: italic; }
+#committee-page .team-members .committee-member h4 { font-size: 1.1rem; /* Slightly smaller for members */ }
+#committee-page .team-members .committee-member p { display: none; /* Hide designation for team members */ }
+
+/* --- Managing Committee Page Styles --- */
+#managing-committee-page .committee-grid { /* General grid for this page */ display: grid; justify-content: center; gap: 30px; max-width: 1100px; /* Allow wider grid */ margin: 0 auto; /* Center grid */ }
+#managing-committee-page .managing-top-row { /* Aim for 3 columns on wider screens */ grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+#managing-committee-page .managing-bottom-row { /* Aim for 2 columns on wider screens */ grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); max-width: 800px; /* Limit width for 2 columns */ }
+.managing-member { text-align: center; padding: 15px; background-color: rgba(255, 255, 255, 0.4); /* Optional subtle background */ border-radius: 8px; }
+.managing-member-photo { width: 100%; /* Make image responsive within its container */ max-width: 280px; /* Control max size */ height: auto; /* Maintain aspect ratio */ border-radius: 8px; /* Slightly rounded corners */ border: 3px solid var(--secondary-color); /* Gold border */ box-shadow: 0 5px 15px rgba(0,0,0,0.15); margin: 0 auto 15px auto; /* Center image */ display: block; background-color: #eee; /* Placeholder bg */ }
+.managing-member h4 { font-family: var(--font-heading); font-size: 1.3rem; color: var(--primary-color); margin-bottom: 5px; }
+.managing-member p.designation { /* Style for designation */ font-size: 1rem; color: var(--text-color); /* Use default text color or slightly muted */ line-height: 1.4; }
+.group-photo { max-width: 100%; /* Ensure it's responsive */ height: auto; border: 3px solid var(--secondary-color); box-shadow: 0 5px 15px rgba(0,0,0,0.15); border-radius: 5px; margin: 20px auto; /* Center group photo */ display: block; background-color: #eee; /* Placeholder bg */ }
+.group-photo-description { max-width: 900px; /* Limit width of description */ margin: 20px auto 0 auto; /* Space above, centered */ font-size: 0.95rem; line-height: 1.6; color: #444; /* Slightly darker text for description */ text-align: left; /* Align description text left */ }
+.group-photo-description p { margin-bottom: 10px; }
+.group-photo-description strong { color: var(--primary-color); /* Highlight row indication */ font-family: var(--font-heading); }
+
+/* --- Footer --- */
+.site-footer { background-color: var(--footer-bg); color: var(--light-text); padding: 20px 0; text-align: center; /* Center all text content */ }
+.site-footer .container { display: flex; flex-direction: column; align-items: center; /* Center child elements horizontally */ gap: 10px; /* Add space between elements */ }
+.site-footer p { margin: 0; /* Remove default paragraph margins */ }
+.site-footer .social-links { display: flex; gap: 15px; justify-content: center; /* Center social icons */ margin-top: 10px; }
+.site-footer .social-links a { color: var(--light-text); font-size: 1.2rem; transition: color 0.3s ease; }
+.site-footer .social-links a:hover { color: var(--secondary-color); }
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+    :root { --container-width: 960px; }
+    .hero-content .fest-title { font-size: 4rem; }
+    .hero-content .theme-kannada { font-size: 1.9rem; }
+    .section-title { font-size: 2.2rem; }
+    .main-navigation ul { gap: 12px; }
+    .main-navigation a { font-size: 0.8rem; padding: 8px 2px; }
+}
+@media (max-width: 768px) {
+    :root { --container-width: 100%; }
+    .logo img { height: 55px; }
+    .section-title { font-size: 2rem; }
+    .hero-section {
+        min-height: 40vh; /* Slightly adjust hero height for mobile */
+        /* Ensure video content aligns well */
+    }
+    .hero-content .fest-title { font-size: 3rem; }
+    .hero-content .theme-kannada { font-size: 1.6rem; }
+    .main-navigation { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--header-bg); box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-top: 1px solid var(--border-light); }
+    .main-navigation.active { display: block; }
+    .main-navigation ul { flex-direction: column; padding: 10px 0; gap: 0; }
+    .main-navigation li { width: 100%; text-align: center; border-bottom: 1px solid #eee; }
+    .main-navigation li:last-child { border-bottom: none; }
+    .main-navigation a { display: block; padding: 15px; border-bottom: none; font-size: 1rem; }
+    .main-navigation a:hover { background-color: #f8f8f8; color: var(--primary-color); border-bottom: none; }
+    .menu-toggle { display: block; }
+    .gallery-grid, .events-grid, .sponsors-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+    /* Committee grids */
+    #committee-page .core-committee, #committee-page .team-leads, #committee-page .team-members { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); max-width: 100%; }
+    #committee-page .member-photo-wrapper { width: 120px; height: 120px; }
+    #committee-page .core-committee .member-photo-wrapper, #committee-page .committee-member.lead .member-photo-wrapper { width: 140px; height: 140px; }
+    #committee-page .team-members .member-photo-wrapper { width: 100px; height: 100px; }
+    #committee-page .insta-link i.fab.fa-instagram { font-size: 1.8rem; }
+    #committee-page .team-members .insta-link i.fab.fa-instagram { font-size: 1.5rem; }
+    /* Managing committee columns */
+     #managing-committee-page .managing-top-row, #managing-committee-page .managing-bottom-row { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+      .managing-member-photo { max-width: 220px; /* Smaller photos */ }
+      .managing-member h4 { font-size: 1.2rem; }
+      .managing-member p.designation { font-size: 0.95rem; }
+      .group-photo-description { font-size: 0.9rem; text-align: center; }
+    /* Modal responsive */
+    .modal-content { width: 90%; padding: 20px; }
+    #modalEventTitle { font-size: 1.6rem; }
+    .modal-details-grid { grid-template-columns: 1fr; gap: 5px; }
+    .modal-details-grid p { font-size: 0.9rem; }
+    .modal-register-button { width: 80%; }
+    /* Schedule responsive */
+    .day-events-list li { flex-direction: column; align-items: flex-start; gap: 3px; }
+    .event-venue { text-align: left; margin-left: 5px; padding-left: 0; }
+    .schedule-day { padding: 20px; }
+    .day-heading { font-size: 1.5rem; }
+    /* Form responsive */
+    .classical-form { padding: 20px; }
+    .form-group label { font-size: 1rem; }
+    .form-group input, .form-group select { padding: 10px; font-size: 0.95rem; }
+    .classical-form button[type="submit"] { font-size: 1rem; padding: 12px; }
+}
+@media (max-width: 480px) {
+    .hero-content .fest-title { font-size: 2.5rem; }
+    .hero-content .theme-kannada { font-size: 1.3rem; }
+    .section-title { font-size: 1.8rem; }
+    .main-navigation a { font-size: 0.75rem; letter-spacing: 0; padding: 8px 2px;}
+    .button { padding: 10px 18px; font-size: 0.85rem; } /* Smaller buttons */
+    .gallery-grid, .events-grid, .sponsors-grid { grid-template-columns: 1fr; gap: 20px; } /* Single column */
+    #committee-page .core-committee, #committee-page .team-leads, #committee-page .team-members { grid-template-columns: 1fr; }
+     #managing-committee-page .managing-top-row, #managing-committee-page .managing-bottom-row { grid-template-columns: 1fr; /* Single column */ }
+     .managing-member-photo { max-width: 200px; }
+    .gallery-grid img { height: 200px; }
+    .event-poster-image { aspect-ratio: 3 / 4; }
+    .event-poster-title { font-size: 1rem; padding: 12px 10px 8px 10px; }
+    .sponsor-logo img { max-height: 100px; }
+    #committee-page .member-photo-wrapper { margin: 0 auto 10px auto; }
+    .classical-form { padding: 15px; }
+    .updates-list li { padding: 12px 15px; }
+    /* Schedule responsive */
+    .day-events-list li { font-size: 0.9rem; }
+    .event-time { min-width: auto; /* Allow time to wrap */ }
+    .event-venue { font-size: 0.85rem; }
+    .day-heading { font-size: 1.3rem; }
+}
